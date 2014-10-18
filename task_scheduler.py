@@ -51,8 +51,6 @@ def getUserSchedule():
 
 #Main function for CLI usage
 def main(userSchedule):
-    #drive = tsAuthenticate()
-    #dbUpload(drive, "<schedule>EXAMPLE!</schedule>")
     for schedule in userSchedule:
         print schedule.toString()
     userInput = EMPTY
@@ -65,7 +63,6 @@ def main(userSchedule):
         print 'q - Quit'
         userInput = raw_input('Selection:')
         if userInput == 'a':
-            #listSchedule('Monday')
             print 'Week number 23'
         elif userInput == 'h':
             #List history!
