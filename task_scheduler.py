@@ -1,6 +1,4 @@
 #!/usr/bin/env python2
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
 
 DATABASE = 'schedule.db'
 EMPTY = ''
@@ -35,23 +33,10 @@ def wrapString(wrapper, string):
     else:
         return string
     return wrapper + string + wrapEnd
-
-#Authenticates the application with Google Drive
-def tsAuthenticate():
-    gauth = GoogleAuth()
-    gauth.LocalWebserverAuth()
-    drive = GoogleDrive(gauth)
-    return drive
     
 #Create application folder
 def dbSetup():
     print "Setting up TaskScheduler database."
-    
-#Uploads the application schedule database
-def dbUpload(drive, schedule):
-    upSchedule = drive.CreateFile({'title': DATABASE})
-    upSchedule.SetContentString(schedule)
-    upSchedule.Upload()
 
 #Reads the user's schedule from the database
 def getUserSchedule():
