@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<schedule>
+    <week val="23">
+        <task>
+            <status>Completed</status>
+            <name>CS:GO with buddies!</name>
+            <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
+            <day>Monday</day>
+        </task>
+        <task>
+            <status>POSTPONED</status>
+            <name>Borderlands 1.5</name>
+            <desc>Blame SDP Assignment!</desc>
+            <day>Thursday</day>
+        </task>
+    </week>
+    <week val="22">
+        <task>
+            <status>Completed</status>
+            <name>Real life hangman</name>
+            <desc>Need a reason to hang that Thomas guy.</desc>
+        </task>
+    </week>
+    <week val="21">
+        <task>
+            <status>Completed</status>
+            <name>Shark racing!</name>
+            <desc>Sharky the goldfish is really excited!</desc>
+        </task>
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+    </week>
+    <week val="20">
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+    </week>
+    <week val="19">
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+    </week>
+    <week val="18">
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+        <task>
+            <status></status>
+            <name></name>
+            <desc></desc>
+        </task>
+    </week>
+</schedule>

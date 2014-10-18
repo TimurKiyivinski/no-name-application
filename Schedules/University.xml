@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<schedule>
+    <week val="23">
+        <task>
+            <status>TODO</status>
+            <name>C++</name>
+            <desc>Lab 3!</desc>
+            <day>Friday</day>
+        </task>
+    </week>
+    <week val="22">
+        <task>
+            <status>Complete</status>
+            <name>SDP</name>
+            <desc>Fail unit completely.</desc>
+            <day>Monday</day>
+        </task>
+    </week>
+    <week val="21">
+        <task>
+            <status>Cancelled</status>
+            <name>Life Lessons</name>
+            <desc>Use your brain</desc>
+            <day>Wednesday</day>
+        </task>
+        <task>
+            <status>Complete</status>
+            <name>Drowning Lessons</name>
+            <desc>It will please 100% of the human race.</desc>
+            <day>Monday</day>
+        </task>
+    </week>
+    <week val="20">
+        <task>
+            <status>Complete</status>
+            <name>Database Analysis and Design</name>
+            <desc>Finish part 3 of assignment 1</desc>
+            <day>Tuesday</day>
+        </task>
+        <task>
+            <status>Complete</status>
+            <name>No Class Class</name>
+            <desc>I am C</desc>
+            <day>Thursday</day>
+        </task>
+    </week>
+    <week val="19">
+        <task>
+            <status>Cancelled</status>
+            <name>C++</name>
+            <desc>Weekly labs due!</desc>
+            <day>Friday</day>
+        </task>
+    </week>
+    <week val="18">
+        <task>
+            <status>Complete</status>
+            <name>English language</name>
+            <desc>Write an essay on the differences between Mandarin and Tamil.</desc>
+            <day>Monday</day>
+        </task>
+    </week>
+</schedule>
