@@ -5,13 +5,13 @@
             <status>Completed</status>
             <name>CS:GO with buddies!</name>
             <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
-            <day>Monday</day>
+            <day></day>
         </task>
         <task>
             <status>POSTPONED</status>
             <name>Borderlands 1.5</name>
             <desc>Blame SDP Assignment!</desc>
-            <day>Thursday</day>
+            <day></day>
         </task>
     </week>
     <week val="22">
@@ -19,6 +19,7 @@
             <status>Completed</status>
             <name>Real life hangman</name>
             <desc>Need a reason to hang that Thomas guy.</desc>
+            <day></day>
         </task>
     </week>
     <week val="21">
@@ -26,21 +27,25 @@
             <status>Completed</status>
             <name>Shark racing!</name>
             <desc>Sharky the goldfish is really excited!</desc>
+            <day></day>
         </task>
         <task>
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
         <task>
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
         <task>
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
     </week>
     <week val="20">
@@ -48,11 +53,13 @@
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
         <task>
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
     </week>
     <week val="19">
@@ -60,6 +67,7 @@
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
     </week>
     <week val="18">
@@ -67,16 +75,19 @@
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
         <task>
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
         <task>
             <status></status>
             <name></name>
             <desc></desc>
+            <day></day>
         </task>
     </week>
 </schedule>
