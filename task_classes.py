@@ -1,7 +1,6 @@
 #!/usr/bin/env python2
 import task_shared as shared
 
-DATABASE = 'schedule.db'
 EMPTY = ''
 SPACE = ' '
 
@@ -12,13 +11,11 @@ class task:
             newName = "",
             newStatus = "",
             newExplain = "",
-            newWeek = 0,
             newDay = 0):
         self.category = newCat
         self.name = newName
         self.status = newStatus
         self.explain = newExplain
-        self.week = newWeek
         self.day = newDay
     def setCategory(self, newCategory):
         self.category = newCategory
@@ -28,11 +25,6 @@ class task:
         self.name = newName
     def setExplain(self, newExplain):
         self.explain = newExplain
-    def setWeek(self, newWeek):
-        if newWeek in range(1, 53):
-            self.week = newWeek
-        else:
-            self.week = -1
     def setDay(self, newDay):
         if newDay in range(0, 7):
             self.day = newDay
@@ -49,6 +41,43 @@ class week:
             newTasks = []):
         self.tasks = newTasks
         self.number = newNumber
+    def setWeek(self, newNumber):
+        if newNumber in range(1, 53):
+            self.number = newNumber
+        else:
+            self.number = -1
+            
+class category:
+    def __init__(self,
+            newCategory = "Personal",
+            newWeeks = [],
+            newOwners = []):
+        self.name = newCategory
+        self.weeks = newWeeks
+        self.owners = newOwners
+    def addTask(self, setWeek, newTask):
+        for weekNo in self.weeks:
+            if setWeek == weekNo.number:
+                weekNo.tasks.append(newTask)
+                break
+        
+class schedule:
+    def __init__(self,
+            newCategories = []):
+        self.categories = []
+        for cat in newCategories:
+            addCategory(cat)
+    def addCategory(self, newCategory):
+        for cat in self.categories:
+            if newCategory.name == cat.name:
+                return 'Category already exists.'
+        self.categories.append(newCategory)
+        return 'Category %s added successfully.' % newCategory.name
+    def addTask(self, setCategory, setWeek, newTask):
+        for cat in self.categories:
+            if setCategory == cat.name:
+                cat.addTask(setWeek, newTask)
+                break
         
 if __name__ == '__main__':
     print 'Please load this as a module.'
