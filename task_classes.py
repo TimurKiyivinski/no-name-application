@@ -41,32 +41,75 @@ class week:
             newTasks = []):
         self.tasks = newTasks
         self.number = newNumber
+        self.iter_current = 0
+    def __iter__(self):
+        return self
+    def next(self):
+        if self.iter_current >= len(self.tasks):
+            self.iter_current = 0
+            raise StopIteration
+        else:
+            self.iter_current += 1
+            return self.tasks[self.iter_current - 1]
     def setWeek(self, newNumber):
         if newNumber in range(1, 53):
             self.number = newNumber
         else:
             self.number = -1
+    def addTask(self, newTask):
+        self.tasks.append(newTask)
+    def toString(self):
+        return str(self.number)
             
 class category:
     def __init__(self,
             newCategory = "Personal",
-            newWeeks = [],
-            newOwners = []):
+            newWeeks = []):
         self.name = newCategory
         self.weeks = newWeeks
-        self.owners = newOwners
+        self.iter_current = 0
+    def __iter__(self):
+        return self
+    def next(self):
+        if self.iter_current >= len(self.weeks):
+            self.iter_current = 0
+            raise StopIteration
+        else:
+            self.iter_current += 1
+            return self.weeks[self.iter_current - 1]
+    def addWeek(self, newWeek):
+        for weekNo in self.weeks:
+            if newWeek.number == weekNo.number:
+                return 'Week already exists.'
+        self.weeks.append(newWeek)
     def addTask(self, setWeek, newTask):
         for weekNo in self.weeks:
             if setWeek == weekNo.number:
-                weekNo.tasks.append(newTask)
-                break
+                weekNo.addTask(newTask)
+                return
+        new_week = week(setWeek)
+        new_week.addTask(newTask)
+        self.addWeek(new_week)
+    def toString(self):
+        return self.name
         
 class schedule:
     def __init__(self,
             newCategories = []):
         self.categories = []
+        self.iter_current = 0
         for cat in newCategories:
-            addCategory(cat)
+            self.addCategory(cat)
+    def __iter__(self):
+        print len(self.categories)
+        return self
+    def next(self):
+        if self.iter_current >= len(self.categories):
+            self.iter_current = 0
+            raise StopIteration
+        else:
+            self.iter_current += 1
+            return self.categories[self.iter_current - 1]
     def addCategory(self, newCategory):
         for cat in self.categories:
             if newCategory.name == cat.name:
@@ -77,7 +120,10 @@ class schedule:
         for cat in self.categories:
             if setCategory == cat.name:
                 cat.addTask(setWeek, newTask)
-                break
+                return
+        new_category = category(setCategory)
+        new_category.addTask(setWeek, newTask)
+        self.addCategory(new_category)
         
 if __name__ == '__main__':
     print 'Please load this as a module.'
