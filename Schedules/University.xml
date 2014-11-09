@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <schedule>
-    <week val="23">
+    <week val="6" name="">
         <task>
             <status>TODO</status>
             <name>C++</name>
@@ -8,7 +8,7 @@
             <day></day>
         </task>
     </week>
-    <week val="22">
+    <week val="5" name="">
         <task>
             <status>Complete</status>
             <name>SDP</name>
@@ -16,7 +16,7 @@
             <day></day>
         </task>
     </week>
-    <week val="21">
+    <week val="4" name="">
         <task>
             <status>Cancelled</status>
             <name>Life Lessons</name>
@@ -30,7 +30,7 @@
             <day></day>
         </task>
     </week>
-    <week val="20">
+    <week val="3" name="">
         <task>
             <status>Complete</status>
             <name>Database Analysis and Design</name>
@@ -44,7 +44,7 @@
             <day></day>
         </task>
     </week>
-    <week val="19">
+    <week val="2" name="">
         <task>
             <status>Cancelled</status>
             <name>C++</name>
@@ -52,7 +52,7 @@
             <day></day>
         </task>
     </week>
-    <week val="18">
+    <week val="1" name="">
         <task>
             <status>Complete</status>
             <name>English language</name>

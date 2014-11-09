@@ -7,20 +7,16 @@ SPACE = ' '
 #Task Class
 class task:
     def __init__(self,
-            newCat = "",
             newName = "",
             newStatus = "",
             newExplain = "",
             newDay = 0,
             newTime = 0):
-        self.category = newCat
         self.name = newName
         self.status = newStatus
         self.explain = newExplain
         self.day = newDay
         self.time = newTime
-    def setCategory(self, newCategory):
-        self.category = newCategory
     def setStatus(self, newStatus):
         self.status = newStatus
     def setName(self, newName):
@@ -34,14 +30,17 @@ class task:
             self.day = -1
     def toString(self):
         returnString = shared.wrapString(self.status, '[') + SPACE
-        returnString += shared.wrapString(self.category, '{') + SPACE + self.explain
+        returnString += shared.wrapString(self.name, '(') + SPACE
+        returnString += shared.wrapString(self.explain, '<')
         return returnString
 
 class week:
     def __init__(self,
             newNumber = 1,
+            newName = "",
             newTasks = []):
         self.tasks = newTasks
+        self.name = newName
         self.number = newNumber
         self.iter_current = 0
     def __iter__(self):
@@ -53,6 +52,8 @@ class week:
         else:
             self.iter_current += 1
             return self.tasks[self.iter_current - 1]
+    def setName(self, newName):
+        self.name = newName
     def setWeek(self, newNumber):
         if newNumber in range(1, 53):
             self.number = newNumber
@@ -61,7 +62,7 @@ class week:
     def addTask(self, newTask):
         self.tasks.append(newTask)
     def toString(self):
-        return str(self.number)
+        return "Week " + str(self.number) + SPACE + ":" + SPACE + self.name
             
 class category:
     def __init__(self,
@@ -84,12 +85,12 @@ class category:
             if newWeek.number == weekNo.number:
                 return 'Week already exists.'
         self.weeks.append(newWeek)
-    def addTask(self, setWeek, newTask):
+    def addTask(self, setWeek, setWeekName, newTask):
         for weekNo in self.weeks:
             if setWeek == weekNo.number:
                 weekNo.addTask(newTask)
                 return
-        new_week = week(setWeek)
+        new_week = week(setWeek, setWeekName)
         new_week.addTask(newTask)
         self.addWeek(new_week)
     def toString(self):
@@ -118,14 +119,13 @@ class schedule:
                 return 'Category already exists.'
         self.categories.append(newCategory)
         return 'Category %s added successfully.' % newCategory.name
-    def addTask(self, setCategory, setWeek, newTask):
-        newTask.setCategory(setCategory)
+    def addTask(self, setCategory, setWeek, setWeekName, newTask):
         for cat in self.categories:
             if setCategory == cat.name:
-                cat.addTask(setWeek, newTask)
+                cat.addTask(setWeek, setWeekName, newTask)
                 return
         new_category = category(setCategory)
-        new_category.addTask(setWeek, newTask)
+        new_category.addTask(setWeek, setWeekName, newTask)
         self.addCategory(new_category)
         
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <schedule>
-    <week val="23">
+    <week val="5" name="Game on!">
         <task>
             <status>Completed</status>
             <name>CS:GO with buddies!</name>
@@ -14,7 +14,7 @@
             <day></day>
         </task>
     </week>
-    <week val="22">
+    <week val="4" name="">
         <task>
             <status>Completed</status>
             <name>Real life hangman</name>
@@ -22,7 +22,7 @@
             <day></day>
         </task>
     </week>
-    <week val="21">
+    <week val="3" name="">
         <task>
             <status>Completed</status>
             <name>Shark racing!</name>
@@ -48,7 +48,7 @@
             <day></day>
         </task>
     </week>
-    <week val="20">
+    <week val="2" name="">
         <task>
             <status></status>
             <name></name>
@@ -62,27 +62,7 @@
             <day></day>
         </task>
     </week>
-    <week val="19">
-        <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
-        </task>
-    </week>
-    <week val="18">
-        <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
-        </task>
-        <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
-        </task>
+    <week val="1" name="">
         <task>
             <status></status>
             <name></name>

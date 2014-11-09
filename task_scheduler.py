@@ -26,7 +26,8 @@ def getUserSchedule():
             tree = ET.parse(join(PATH, CATEGORY + '.xml'))
             root_xml = tree.getroot()
             for week_xml in root_xml:
-                new_week = week_xml.attrib
+                new_week = week_xml.attrib['val']
+                new_week_name = week_xml.attrib['name']
                 for task_xml in week_xml:
                     new_task = classes.task()
                     for items_xml in task_xml:
@@ -45,7 +46,7 @@ def getUserSchedule():
                         else:
                             print "Unknown tag:"
                             print items_tag
-                    schedules.addTask(CATEGORY, new_week, new_task)
+                    schedules.addTask(CATEGORY, new_week, new_week_name, new_task)
         except NameError:
             print "An error has occured parsing the XML."
     return schedules
@@ -54,8 +55,13 @@ def getUserSchedule():
 def main(userSchedule):
     #TODO: Get schedules!
     for cat in userSchedule:
+        print "\n------\n"
         print cat.toString()
+        print "\n------\n"
         for weekNo in cat:
+            print "\n------\n"
+            print weekNo.toString()
+            print "\n------\n"
             for taskNo in weekNo:
                 print taskNo.toString()
 
