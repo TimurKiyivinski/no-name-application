@@ -11,12 +11,14 @@ class task:
             newName = "",
             newStatus = "",
             newExplain = "",
-            newDay = 0):
+            newDay = 0,
+            newTime = 0):
         self.category = newCat
         self.name = newName
         self.status = newStatus
         self.explain = newExplain
         self.day = newDay
+        self.time = newTime
     def setCategory(self, newCategory):
         self.category = newCategory
     def setStatus(self, newStatus):
@@ -117,6 +119,7 @@ class schedule:
         self.categories.append(newCategory)
         return 'Category %s added successfully.' % newCategory.name
     def addTask(self, setCategory, setWeek, newTask):
+        newTask.setCategory(setCategory)
         for cat in self.categories:
             if setCategory == cat.name:
                 cat.addTask(setWeek, newTask)
