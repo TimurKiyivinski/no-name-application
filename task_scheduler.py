@@ -43,27 +43,26 @@ def getUserSchedule():
                             new_task.setExplain(items_text)
                         elif items_tag == 'day':
                             new_task.setDay(items_text)
+                        elif items_tag == 'time':
+                            new_task.setTime(items_text)
                         else:
-                            print "Unknown tag:"
+                            print 'Unknown tag:'
                             print items_tag
                     schedules.addTask(CATEGORY, new_week, new_week_name, new_task)
         except NameError:
-            print "An error has occured parsing the XML."
+            print 'An error has occured parsing the XML.'
     return schedules
 
 #Main function for CLI usage
 def main(userSchedule):
     #TODO: Get schedules!
-    for cat in userSchedule:
-        print "\n------\n"
-        print cat.toString()
-        print "\n------\n"
-        for weekNo in cat:
-            print "\n------\n"
-            print weekNo.toString()
-            print "\n------\n"
-            for taskNo in weekNo:
-                print taskNo.toString()
+    #'''
+    for category in userSchedule:
+        print category.toString()
+        for week in category:
+            print week.toString()
+            for task in week:
+                print task.toString()
 
 #Run the application
 if __name__ == '__main__':

@@ -5,13 +5,8 @@
             <status>Completed</status>
             <name>CS:GO with buddies!</name>
             <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
-            <day></day>
-        </task>
-        <task>
-            <status>POSTPONED</status>
-            <name>Borderlands 1.5</name>
-            <desc>Blame SDP Assignment!</desc>
-            <day></day>
+            <day>2</day>
+            <time>16:00</time>
         </task>
     </week>
     <week val="4" name="">
@@ -19,7 +14,8 @@
             <status>Completed</status>
             <name>Real life hangman</name>
             <desc>Need a reason to hang that Thomas guy.</desc>
-            <day></day>
+            <day>1</day>
+            <time>16:00</time>
         </task>
     </week>
     <week val="3" name="">
@@ -27,47 +23,26 @@
             <status>Completed</status>
             <name>Shark racing!</name>
             <desc>Sharky the goldfish is really excited!</desc>
-            <day></day>
-        </task>
-        <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
-        </task>
-        <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
-        </task>
-        <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
+            <day>3</day>
+            <time>16:00</time>
         </task>
     </week>
     <week val="2" name="">
         <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
-        </task>
-        <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
+            <status>Cancelled</status>
+            <name>Carotting</name>
+            <desc>Apparently banned?</desc>
+            <day>4</day>
+            <time>13:00</time>
         </task>
     </week>
     <week val="1" name="">
         <task>
-            <status></status>
-            <name></name>
-            <desc></desc>
-            <day></day>
+            <status>Cancelled</status>
+            <name>Nothing</name>
+            <desc>Nothing!</desc>
+            <day>4</day>
+            <time>09:00</time>
         </task>
     </week>
 </schedule>

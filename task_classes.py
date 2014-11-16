@@ -28,6 +28,8 @@ class task:
             self.day = newDay
         else:
             self.day = -1
+    def setTime(self, newTime):
+        self.time = newTime
     def toString(self):
         returnString = shared.wrapString(self.status, '[') + SPACE
         returnString += shared.wrapString(self.name, '(') + SPACE
@@ -39,9 +41,9 @@ class week:
             newNumber = 1,
             newName = "",
             newTasks = []):
-        self.tasks = newTasks
-        self.name = newName
         self.number = newNumber
+        self.name = newName
+        self.tasks = newTasks
         self.iter_current = 0
     def __iter__(self):
         return self
@@ -80,21 +82,24 @@ class category:
         else:
             self.iter_current += 1
             return self.weeks[self.iter_current - 1]
+    def setName(self, newName):
+        self.name = newName
     def addWeek(self, newWeek):
         for weekNo in self.weeks:
             if newWeek.number == weekNo.number:
                 return 'Week already exists.'
         self.weeks.append(newWeek)
+        return 'Week succesfully added.' 
     def addTask(self, setWeek, setWeekName, newTask):
         for weekNo in self.weeks:
-            if setWeek == weekNo.number:
+            if int(setWeek) == int(weekNo.number):
                 weekNo.addTask(newTask)
                 return
-        new_week = week(setWeek, setWeekName)
+        new_week = week(setWeek, setWeekName, [])
         new_week.addTask(newTask)
         self.addWeek(new_week)
     def toString(self):
-        return self.name
+        return 'Category %s: %d weeks.' % (self.name, len(self.weeks))
         
 class schedule:
     def __init__(self,
@@ -104,7 +109,6 @@ class schedule:
         for cat in newCategories:
             self.addCategory(cat)
     def __iter__(self):
-        print len(self.categories)
         return self
     def next(self):
         if self.iter_current >= len(self.categories):
@@ -124,7 +128,7 @@ class schedule:
             if setCategory == cat.name:
                 cat.addTask(setWeek, setWeekName, newTask)
                 return
-        new_category = category(setCategory)
+        new_category = category(setCategory, [])
         new_category.addTask(setWeek, setWeekName, newTask)
         self.addCategory(new_category)
         
