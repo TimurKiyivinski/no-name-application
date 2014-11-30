@@ -131,7 +131,17 @@ class schedule:
         new_category = category(setCategory, [])
         new_category.addTask(setWeek, setWeekName, newTask)
         self.addCategory(new_category)
-        
+    def getCategory(self, nameCategory):
+        for cat in self.categories:
+            if cat.name == nameCategory:
+                return cat
+    def getTasks(self):
+        allTasks = []
+        for cat in self.categories:
+            for weekNo in cat.weeks:
+                allTasks.extend(weekNo.tasks)
+        return allTasks
+
 if __name__ == '__main__':
     print 'Please load this as a module.'
 else:
