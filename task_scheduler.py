@@ -57,27 +57,28 @@ def getUserSchedule():
             print('An error has occured parsing the XML.')
     return schedules
 
-def writeUserSschedule(userSchedule):
+# Generates XML files based on user schedules
+def writeUserSchedule(userSchedule):
     for category in userSchedule:
         newCat = ET.Element('schedule')
         for week in category:
             newWeek = ET.SubElement(newCat, 'week')
-            newWeek.set("val", week.number)
+            newWeek.set("val", str(week.number))
             newWeek.set("name", week.name)
             for task in week:
                 newTask = ET.SubElement(newWeek, 'task')
                 newTaskStatus = ET.SubElement(newTask, 'status')
-                newTaskStatus.text = task.status 
+                newTaskStatus.text = str(task.status)
                 newTaskName = ET.SubElement(newTask, 'name')
-                newTaskName.text = task.name
+                newTaskName.text = str(task.name)
                 newTaskDesc = ET.SubElement(newTask, 'desc')
-                newTaskDesc.text = task.explain
+                newTaskDesc.text = str(task.explain)
                 newTaskDay = ET.SubElement(newTask, 'day')
-                newTaskDay.text = task.day
+                newTaskDay.text = str(task.day)
                 newTaskTime = ET.SubElement(newTask, 'time')
-                newTaskTime.text = task.time
+                newTaskTime.text = str(task.time)
         newTree = ET.ElementTree(newCat)
-        newTree.write(category.name)
+        newTree.write(category.name + ".xml")
 
 # Used for debugging purposes.
 def main(userSchedule):
@@ -87,7 +88,6 @@ def main(userSchedule):
             print(week.toString())
             for task in week:
                 print(task.toString())
-    writeUserSchedule(userSchedule)
 
 #Run the application
 if __name__ == '__main__':
