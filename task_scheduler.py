@@ -11,18 +11,22 @@ import task_shared as shared
 PATH = './Schedules'
 EMPTY = ''
 SPACE = ' '
-    
-#Create application folder
-def dbSetup():
-    print 'Setting up TaskScheduler database.'
 
-#Reads the user's schedule from the database
+# Prepare the user's Google Drive for use with the application.
+def dbSetup():
+    cats = ['Games', 'University']
+    schedules = classes.schedule()
+    for CATEGORY in cats:
+        print('%s' % join(PATH, CATEGORY + '.xml'))
+
+# Loads all schedules in the user's Google Drive folder and create a schedule
+# accordingly.
 def getUserSchedule():
     cats = ['Games', 'University']
     schedules = classes.schedule()
     for CATEGORY in cats:
         try:
-            print '%s' % join(PATH, CATEGORY + '.xml')
+            print('%s' % join(PATH, CATEGORY + '.xml'))
             tree = ET.parse(join(PATH, CATEGORY + '.xml'))
             root_xml = tree.getroot()
             for week_xml in root_xml:
@@ -46,27 +50,46 @@ def getUserSchedule():
                         elif items_tag == 'time':
                             new_task.setTime(items_text)
                         else:
-                            print 'Unknown tag:'
-                            print items_tag
+                            print('Unknown tag:')
+                            print(items_tag)
                     schedules.addTask(CATEGORY, new_week, new_week_name, new_task)
         except NameError:
-            print 'An error has occured parsing the XML.'
+            print('An error has occured parsing the XML.')
     return schedules
 
-#Main function for CLI usage
-def main(userSchedule):
-    #TODO: Get schedules!
-    #'''
+def writeUserSschedule(userSchedule):
     for category in userSchedule:
-        print category.toString()
+        newCat = ET.Element('schedule')
         for week in category:
-            print week.toString()
+            newWeek = ET.SubElement(newCat, 'week')
+            newWeek.set("val", week.number)
+            newWeek.set("name", week.name)
             for task in week:
-                print task.toString()
+                newTask = ET.SubElement(newWeek, 'task')
+                newTaskStatus = ET.SubElement(newTask, 'status')
+                newTaskStatus.text = task.status 
+                newTaskName = ET.SubElement(newTask, 'name')
+                newTaskName.text = task.name
+                newTaskDesc = ET.SubElement(newTask, 'desc')
+                newTaskDesc.text = task.explain
+                newTaskDay = ET.SubElement(newTask, 'day')
+                newTaskDay.text = task.day
+                newTaskTime = ET.SubElement(newTask, 'time')
+                newTaskTime.text = task.time
+        newTree = ET.ElementTree(newCat)
+        newTree.write(category.name)
+
+# Used for debugging purposes.
+def main(userSchedule):
+    for category in userSchedule:
+        print(category.toString())
+        for week in category:
+            print(week.toString())
+            for task in week:
+                print(task.toString())
+    writeUserSchedule(userSchedule)
 
 #Run the application
 if __name__ == '__main__':
-    print 'Command line interface activated.'
+    print('Debugging.')
     main(getUserSchedule())
-else:
-    print 'Loaded as a module.'
