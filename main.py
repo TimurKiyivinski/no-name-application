@@ -1,18 +1,64 @@
 #!/usr/bin/env python2
-# This file should control the entire application from the UI to the backend.
+# ProcrastinateLaterUI - Attempt1
 
-# Imports
+import os
+import sys
+import kivy
+from time import time
+from glob import glob
+from os.path import join
+from kivy.app import App
+from kivy.lang import Builder, Parser, ParserException
+from kivy.factory import Factory
+from kivy.properties import ObjectProperty, NumericProperty, StringProperty
 
-import task_classes as classes
-import task_scheduler as scheduler
+# Interaction Objects
+from kivy.uix.label import Label
+from kivy.uix.image import Image
+from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput
+from kivy.uix.dropdown import DropDown
+from kivy.uix.carousel import Carousel
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.popup import Popup
 
-# Control 
-def main():
-    print('Loading main()')
-    schedules = scheduler.getUserSchedule()
-    scheduler.main(schedules)
+# Layouts
+from kivy.uix.stacklayout import StackLayout
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.boxlayout import BoxLayout
 
+# loads .kv files (like html loads a .css file) - basically the app screen
+
+Builder.load_file('main.kv')
+
+# A container is essentially a class that loads its root from a known .kv file.
+class Container(BoxLayout):
+    
+    def __init__(self, **kwargs):
+        super(Container, self).__init__(**kwargs)
+        parser = Parser(content=open(self.kv_file).read())
+        widget = Factory.get(parser.root.name)()
+        Builder._apply_rule(widget, parser.root, parser.root)
+        self.add_widget(widget)
+
+class MenuPopup(Popup):
+	pass
+
+class ProcrastinateLater(BoxLayout):
+    
+    index = NumericProperty(-1)
+    current_title = StringProperty()
+    time = NumericProperty(0)
+    
+    def __init__(self, **kwargs):
+        super(ProcrastinateLater, self).__init__(**kwargs)
+        popup = MenuPopup()
+
+
+class ProcrastinateLaterApp(App):
+    
+    def build(self):
+        return ProcrastinateLater()
+        
 if __name__ == '__main__':
-    main()
-else:
-    quit('This is not meant to be ran as a module.')
+    ProcrastinateLaterApp().run()
