@@ -4,13 +4,30 @@ import glob
 from os import listdir
 from os.path import isfile, join
 
-#task_scheduler
+# google drive
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+
+# task_scheduler
 import task_classes as classes
 import task_shared as shared
 
 PATH = './Schedules'
 EMPTY = ''
 SPACE = ' '
+
+# Google Drive authentication
+def tsAuthenticate():
+    gauth = GoogleAuth()
+    gauth.LocalWebserverAuth()
+    drive = GoogleDrive(gauth)
+    return drive
+
+# Uploads a file to Google Drive
+def dbUpload(drive, userCategory, categoryStr):
+    upSchedule = drive.CreateFile({'title': userCategory.name + 'xml'})
+    upSchedule.SetContentString(schedule)
+    upSchedule.Upload()
 
 # Prepare the user's Google Drive for use with the application.
 def dbSetup():
