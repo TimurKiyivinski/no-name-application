@@ -55,13 +55,6 @@ class ProcrastinateLater(BoxLayout):
     
     def __init__(self, **kwargs):
         super(ProcrastinateLater, self).__init__(**kwargs)
-    	
-    	
-    def show_menu(self):
-    	popup = Popup(name='Menu', title='MENU', content=Button(text='Test Popup)'),
-	    size_hint=(None, None), size=(400, 400))    	
-		show = self.ids.['menu']
-		show.on_press = popup
 
 class ProcrastinateLaterApp(App):
     
