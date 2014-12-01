@@ -1,5 +1,4 @@
 #!/usr/bin/env python2
-# ProcrastinateLaterUI - Attempt1
 
 import os
 import sys
@@ -23,11 +22,11 @@ from kivy.uix.carousel import Carousel
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.popup import Popup
 from kivy.uix.modalview import ModalView
+
 # Layouts
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
-
 
 fullscreen = Config.get('graphics', 'fullscreen')
 
@@ -36,7 +35,6 @@ Builder.load_file('main.kv')
 
 # A container is essentially a class that loads its root from a known .kv file.
 class Container(BoxLayout):
-    
     def __init__(self, **kwargs):
         super(Container, self).__init__(**kwargs)
         parser = Parser(content=open(self.kv_file).read())
@@ -48,20 +46,15 @@ class MenuPopup(Popup):
 	pass
 
 class ProcrastinateLater(BoxLayout):
-    
     index = NumericProperty(-1)
     current_title = StringProperty()
     time = NumericProperty(0)
-    
     def __init__(self, **kwargs):
         super(ProcrastinateLater, self).__init__(**kwargs)
-    
     def show_menu(self):
     	pass
 
-
 class ProcrastinateLaterApp(App):
-    
     def build(self):
         return ProcrastinateLater()
         

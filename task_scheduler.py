@@ -25,8 +25,8 @@ def tsAuthenticate():
 
 # Uploads a file to Google Drive
 def dbUpload(drive, userCategory, categoryStr):
-    upSchedule = drive.CreateFile({'title': userCategory.name + 'xml'})
-    upSchedule.SetContentString(schedule)
+    upSchedule = drive.CreateFile({'title': userCategory.name + '.xml'})
+    upSchedule.SetContentString(categoryStr)
     upSchedule.Upload()
 
 # Prepare the user's Google Drive for use with the application.
@@ -75,7 +75,7 @@ def getUserSchedule():
     return schedules
 
 # Generates XML files based on user schedules
-def writeUserSchedule(userSchedule):
+def writeUserSchedule(userSchedule, drive):
     for category in userSchedule:
         newCat = ET.Element('schedule')
         for week in category:
@@ -94,8 +94,11 @@ def writeUserSchedule(userSchedule):
                 newTaskDay.text = str(task.day)
                 newTaskTime = ET.SubElement(newTask, 'time')
                 newTaskTime.text = str(task.time)
-        newTree = ET.ElementTree(newCat)
-        newTree.write(category.name + ".xml")
+        #newTree = ET.ElementTree(newCat)
+        treeString = ET.tostring(newCat)
+        #print(newTree.tostring())
+        dbUpload(drive, category, treeString)
+        #newTree.write(category.name + ".xml")
 
 # Used for debugging purposes.
 def main(userSchedule):
@@ -105,6 +108,8 @@ def main(userSchedule):
             print(week.toString())
             for task in week:
                 print(task.toString())
+    drive = tsAuthenticate()
+    writeUserSchedule(userSchedule, drive)
 
 #Run the application
 if __name__ == '__main__':
