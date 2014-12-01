@@ -8,6 +8,7 @@ from time import time
 from glob import glob
 from os.path import join
 from kivy.app import App
+from kivy.config import Config
 from kivy.lang import Builder, Parser, ParserException
 from kivy.factory import Factory
 from kivy.properties import ObjectProperty, NumericProperty, StringProperty
@@ -21,14 +22,16 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.carousel import Carousel
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.popup import Popup
-
+from kivy.uix.modalview import ModalView
 # Layouts
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 
-# loads .kv files (like html loads a .css file) - basically the app screen
 
+fullscreen = Config.get('graphics', 'fullscreen')
+
+# loads .kv files (like html loads a .css file) - basically the app screen
 Builder.load_file('main.kv')
 
 # A container is essentially a class that loads its root from a known .kv file.
@@ -52,7 +55,9 @@ class ProcrastinateLater(BoxLayout):
     
     def __init__(self, **kwargs):
         super(ProcrastinateLater, self).__init__(**kwargs)
-        popup = MenuPopup()
+    
+    def show_menu(self):
+    	pass
 
 
 class ProcrastinateLaterApp(App):
