@@ -54,12 +54,13 @@
 				size: self.parent.size
 		
 		Button:
+			id: menu
 			Image:
 				source: './icons/option.png'
 				y: self.parent.y
 				x: self.parent.x
 				size: self.parent.size
-				on_press: self.show_menu()
+				on_press = root.show_menu()
 				
 	ScreenManager:
 		id: sm

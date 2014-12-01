@@ -58,10 +58,10 @@ class ProcrastinateLater(BoxLayout):
     	
     	
     def show_menu(self):
-    	popup = Popup(name='Menu', title='MENU', content=Label(text='Test Popup)'),
-    	size_hint=(None, None), size=(400, 400))
-    	return popup
-
+    	popup = Popup(name='Menu', title='MENU', content=Button(text='Test Popup)'),
+	    size_hint=(None, None), size=(400, 400))    	
+		show = self.ids.['menu']
+		show.on_press = popup
 
 class ProcrastinateLaterApp(App):
     
