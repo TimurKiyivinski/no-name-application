@@ -21,6 +21,12 @@
             pos: self.pos
             size: self.size
 
+<MenuPopup>:
+	Popup:
+		Button:
+			text: 'Close'
+			on_press: on_dismiss()
+
 <ProcrastinateLater>:
     orientation: "vertical"
     
@@ -60,6 +66,7 @@
 				y: self.parent.y
 				x: self.parent.x
 				size: self.parent.size
+				on_press: root.show_menu()
 				
 	ScreenManager:
 		id: sm
