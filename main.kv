@@ -1,7 +1,7 @@
 #:import Factory kivy.factory.Factory
 #:import Screen kivy.uix.screenmanager.Screen
 
-<Week@Button>:
+<CAROUSEL@Button>:
 	markup: True
 	size: self.parent.size
 	size_hint: 1, 1
@@ -9,8 +9,6 @@
 <Status@Button>
 	size_hint_x: None
 	width: '150sp'
-	height: '20sp'
-<Task@Button>
 	height: '20sp'
 
 <Container>:
@@ -23,7 +21,6 @@
 
 <ProcrastinateLater>:
     orientation: "vertical"
-    
     BoxLayout:
         padding: '3sp'
         spacing: '4sp'
@@ -34,7 +31,6 @@
                 pos: self.pos
                 size: self.size        
         size_hint: 1, .1
-        
 		Button:
 		    text: 'Categories'
 			size_hint: 3, 1
@@ -45,15 +41,14 @@
 				y: self.parent.y
 				x: self.parent.x
 				size: self.parent.size
-		
 		Button:
 			Image:
-				source: './icons/+.png'
+				source: './icons/add.png'
 				y: self.parent.y
 				x: self.parent.x
 				size: self.parent.size
-		
 		Button:
+			id: menu
 			Image:
 				source: './icons/option.png'
 				y: self.parent.y
@@ -62,8 +57,6 @@
 				
 	ScreenManager:
 		id: sm
-			
-		# View Category Page
 		Screen:
 			name: 'ViewCategoryPage'
 			canvas:
@@ -71,8 +64,8 @@
 					rgba: 1, 1, 1, .8
 				Rectangle:
 					size: self.size
-				
 			BoxLayout:
+                id: category_page
 				orientation: 'vertical'
 				padding: '50sp'
 				spacing: '15sp'
@@ -80,26 +73,23 @@
 				Button:
 					size_hint: 1, None
 					size_y: '48dp'
-					
-					text: 'Go to View Task Page'
-					on_press: sm.current = 'ViewTaskPage'
-				
-				Button:
-					size_hint: 1, None
-					size_y: '48dp'
 					text: 'View Task by Status'
-					on_press: sm.current = 'ViewTaskbyStatus'
+					on_press: root.loadTasksByStatus
 					
 				Button:
 					size_hint: 1, None
 					size_y: '48dp'
 					text: 'View Task by Category'
-					on_press: sm.current = 'ViewTaskbyCategory'
-        
+					on_press: root.loadTasksByCategory
+
+        Screen:
+            name: 'ViewTasks'
+            PageLayout:
+                id: ViewPage
+
         # View Task Page
 		Screen:
 			name: 'ViewTaskPage'
-			
 			BoxLayout:
 				rows: 2
 				orientation: 'vertical'
@@ -111,175 +101,37 @@
 				    Rectangle:
 				        pos: self.pos
 				        size: self.size
-				
+
 				Carousel:
-					id: week
+					id: taskCarousel
 					size_hint: 1, .15
-					
-					Week:
-						text: 'Week1'
-						
-					Week:
-						text: 'Week2'
-					
-					Week:
-						text: 'Week3'
-						
+                    loop: 'true'
+
 				BoxLayout:
 					orientation: 'horizontal'
-					
 					TabbedPanel:
-						id: days
+						id: taskDays
 						do_default_tab: False
-				
 						padding: '3sp'
 						spacing: '4sp'
-					
 						TabbedPanelItem:
-							id: mon
+							id: day_mon
 							text: 'Monday'
-						
 						TabbedPanelItem:
-							id: tue
+							id: day_tue
 							text: 'Tuesay'
-						
 						TabbedPanelItem:
-							id: wed
+							id: day_wed
 							text: 'Wednesday'
-				
 						TabbedPanelItem:
-							id: thu
+							id: day_thu
 							text: 'Thursday'
-				
 						TabbedPanelItem:
-							id: fri
+							id: day_fri
 							text: 'Friday'
-				
 						TabbedPanelItem:
-							id: sat
+							id: day_sat
 							text: 'Saturday'
-				
 						TabbedPanelItem:
-							id: sun
+							id: day_sun
 							text: 'Sunday'
-			
-		# View Task by Status
-		Screen:
-			name: 'ViewTaskbyStatus'
-			
-			BoxLayout:
-				rows: 2
-				orientation: 'vertical'
-				padding: '3sp'
-				spacing: '4sp'
-				canvas:
-				    Color:
-				        rgba: 2,2,2,.3
-				    Rectangle:
-				        pos: self.pos
-				        size: self.size
-				
-				Carousel:
-					id: week
-					size_hint: 1, .1
-					
-					Week:
-						text: 'COMPLETED'
-						
-					Week:
-						text: 'CANCELED'
-					
-					Week:
-						text: 'POSTPONED'
-						
-				StackLayout:
-					orientation: 'lr-bt'
-					padding: '5sp'
-					spacing: '10sp'
-					canvas:
-						Color:
-						    rgba: 1,1,1,.2
-						Rectangle:
-						    pos: self.pos
-						    size: self.size			
-					
-					GridLayout:
-						cols: 2
-						
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-
-		# View Task by Category
-		Screen:
-			name: 'ViewTaskbyCategory'
-			
-			BoxLayout:
-				rows: 2
-				orientation: 'vertical'
-				padding: '3sp'
-				spacing: '4sp'
-				canvas:
-				    Color:
-				        rgba: 2,2,2,.3
-				    Rectangle:
-				        pos: self.pos
-				        size: self.size
-				
-				Carousel:
-					id: category
-					size_hint: 1, .1
-					
-					Week:
-						text: 'PERSONAL'
-						
-					Week:
-						text: 'SCHOOL'
-					
-					Week:
-						text: 'WORK'
-						
-				StackLayout:
-					orientation: 'lr-bt'
-					padding: '5sp'
-					spacing: '10sp'
-					canvas:
-						Color:
-						    rgba: 1,1,1,.2
-						Rectangle:
-						    pos: self.pos
-						    size: self.size			
-					
-					GridLayout:
-						cols: 2
-						
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-						Status:
-							text: 'Status'
-						Task:
-							text: 'Task'
-
