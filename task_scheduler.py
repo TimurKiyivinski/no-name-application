@@ -31,7 +31,7 @@ def dbUpload(drive, userCategory, categoryStr):
 
 # Prepare the user's Google Drive for use with the application.
 def dbSetup():
-    cats = ['Games', 'University']
+    cats = ['Games', 'University', 'Fun']
     schedules = classes.schedule()
     for CATEGORY in cats:
         print('%s' % join(PATH, CATEGORY + '.xml'))
@@ -39,7 +39,7 @@ def dbSetup():
 # Loads all schedules in the user's Google Drive folder and create a schedule
 # accordingly.
 def getUserSchedule():
-    cats = ['Games', 'University']
+    cats = ['Games', 'University', 'Fun']
     schedules = classes.schedule()
     for CATEGORY in cats:
         try:

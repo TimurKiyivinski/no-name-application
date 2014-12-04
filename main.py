@@ -27,6 +27,7 @@ from kivy.uix.stacklayout import StackLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.scrollview import ScrollView
+from kivy.uix.tabbedpanel import *
 
 # Task Scheduler
 import task_classes as classes
@@ -68,9 +69,77 @@ class ProcrastinateLater(BoxLayout):
                     print(week.number)
                     gridPage = GridLayout(cols=1, size_hint_y=None)
                     gridPage.bind(minimum_height=gridPage.setter('height'))
+                    weekButton = Button(text=str(week.number), size_hint_y=None)
+                    gridPage.add_widget(weekButton)
+                    tabbedPage = TabbedPanel(background_color=(1, 0, 0, .5), size_hint_y=None, do_default_tab=False)
+                    # Create all the panels for days
+                    # Monday
+                    tabbedItem_monday = TabbedPanelItem(text='Monday')
+                    gridPage_monday = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_monday.bind(minimum_height=gridPage_monday.setter('height'))
+                    tabbedItem_monday.add_widget(gridPage_monday)
+                    # Tuesday
+                    tabbedItem_tuesday = TabbedPanelItem(text='Tuesday')
+                    gridPage_tuesday = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_tuesday.bind(minimum_height=gridPage_tuesday.setter('height'))
+                    tabbedItem_tuesday.add_widget(gridPage_tuesday)
+                    # Wednesday
+                    tabbedItem_wednesday = TabbedPanelItem(text='Wednesday')
+                    gridPage_wednesday = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_wednesday.bind(minimum_height=gridPage_wednesday.setter('height'))
+                    tabbedItem_wednesday.add_widget(gridPage_wednesday)
+                    # Thursday
+                    tabbedItem_thursday = TabbedPanelItem(text='Thursday')
+                    gridPage_thursday = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_thursday.bind(minimum_height=gridPage_thursday.setter('height'))
+                    tabbedItem_thursday.add_widget(gridPage_thursday)
+                    # Friday
+                    tabbedItem_friday = TabbedPanelItem(text='Friday')
+                    gridPage_friday = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_friday.bind(minimum_height=gridPage_friday.setter('height'))
+                    tabbedItem_friday.add_widget(gridPage_friday)
+                    # Saturday
+                    tabbedItem_saturday = TabbedPanelItem(text='Saturday')
+                    gridPage_saturday = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_saturday.bind(minimum_height=gridPage_saturday.setter('height'))
+                    tabbedItem_saturday.add_widget(gridPage_saturday)
+                    # Sunday
+                    tabbedItem_sunday = TabbedPanelItem(text='Sunday')
+                    gridPage_sunday = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_sunday.bind(minimum_height=gridPage_sunday.setter('height'))
+                    tabbedItem_sunday.add_widget(gridPage_sunday)
+                    # Unassigned
+                    tabbedItem_no_day = TabbedPanelItem(text='Unassigned')
+                    gridPage_no_day = GridLayout(cols=1, size_hint_y=None)
+                    gridPage_no_day.bind(minimum_height=gridPage_no_day.setter('height'))
+                    tabbedItem_no_day.add_widget(gridPage_no_day)
                     for task in week:
                         taskButton = Button(text=task.name, size_hint_y=None)
-                        gridPage.add_widget(taskButton)
+                        if task.day == 1:
+                            gridPage_monday.add_widget(taskButton)
+                        elif task.day == 2:
+                            gridPage_tuesday.add_widget(taskButton)
+                        elif task.day == 3:
+                            gridPage_wed.add_widget(taskButton)
+                        elif task.day == 4:
+                            gridPage_thursday.add_widget(taskButton)
+                        elif task.day == 5:
+                            gridPage_friday.add_widget(taskButton)
+                        elif task.day == 6:
+                            gridPage_saturday.add_widget(taskButton)
+                        elif task.day == 7:
+                            gridPage_sunday.add_widget(taskButton)
+                        else:
+                            gridPage_no_day.add_widget(taskButton)
+                    tabbedPage.add_widget(tabbedItem_monday)
+                    tabbedPage.add_widget(tabbedItem_tuesday)
+                    tabbedPage.add_widget(tabbedItem_wednesday)
+                    tabbedPage.add_widget(tabbedItem_thursday)
+                    tabbedPage.add_widget(tabbedItem_friday)
+                    tabbedPage.add_widget(tabbedItem_saturday)
+                    tabbedPage.add_widget(tabbedItem_sunday)
+                    tabbedPage.add_widget(tabbedItem_no_day)
+                    gridPage.add_widget(tabbedPage)
                     scrollPage = ScrollView()
                     scrollPage.add_widget(gridPage)
                     weekPages.add_widget(scrollPage)

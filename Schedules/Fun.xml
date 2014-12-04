@@ -1,0 +1,96 @@
+<schedule>
+<week name="Relax Week" val="9">
+<task>
+<status>Unfinished</status>
+<name>Drink beer with friends</name>
+<desc>Good Beer for ages.(Only two days)</desc>
+<day>1</day>
+<time>1.30</time>
+</task></week>
+<week name="Pool Time" val="8">
+<task>
+<status>Completed</status>
+<name>Pool</name>
+<desc>As usual.</desc>
+<day>1</day>
+<time>13:30</time>
+</task>
+<task>
+<status>Cancel</status>
+<name>Pool with old school mates</name>
+<desc>Finally!</desc>
+<day>2</day>
+<time>7.30</time>
+</task>
+</week>
+<week name="Plans with girlfriend" val="7">
+<task>
+<status>Completed</status>
+<name>Shopping with girlfriend</name>
+<desc>Expensive</desc>
+<day>1</day>
+<time>16:00</time>
+</task>
+<task>
+<status>Cancel</status>
+<name>Dinner with girlfriend</name>
+<desc>Fine dining</desc>
+<day>2</day>
+<time></time>
+</task>
+</week>
+<week name="Swimming time" val="6">
+<task>
+<status>Completed</status>
+<name>Swimming with the geng</name>
+<desc>A time away from assignment.</desc>
+<day>-1</day>
+<time>16:00</time>
+</task>
+</week>
+<week name="Travelling with friends" val="5">
+<task>
+<status>Cancel</status>
+<name>To manila</name>
+<desc>Manila!!</desc>
+<day>-1</day>
+<time></time>
+</task>
+</week>
+<week name="Break" val="4">
+<task>
+<status></status>
+<name></name>
+<desc></desc>
+<day>-</day>
+<time></time>
+</task>
+</week>
+<week name="Shopping" val="3">
+<task>
+<status>Ongoing</status>
+<name>Shopping with girlfriend again</name>
+<desc>Shop till she drop</desc>
+<day>-1</day>
+<time>13.00</time>
+</task>
+</week>
+<week name="Dota 2" val="2">
+<task>
+<status>Completed</status>
+<name>Dota 2 Tournament</name>
+<desc>Dota time</desc>
+<day>1</day>
+<time>8.00</time>
+</task>
+</week>
+<week name="Sleep" val="1">
+<task>
+<status>Completed</status>
+<name>Sleeping like a stone</name>
+<desc>Sleep is good for the body</desc>
+<day>1</day>
+<time></time>
+</task>
+</week>
+</schedule>

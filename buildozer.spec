@@ -4,7 +4,7 @@
 title = Procrastinate Later
 
 # (str) Package name
-package.name = taskscheduler
+package.name = procrastinatelater
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.kiyivinski
@@ -33,7 +33,7 @@ version = 0.0.1
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = kivy,PyDrive
+requirements = kivy
 
 # (list) Garden requirements
 #garden_requirements =
@@ -42,7 +42,7 @@ requirements = kivy,PyDrive
 #presplash.filename = %(source.dir)s/data/presplash.png
 
 # (str) Icon of the application
-icon.filename = ./icons/128x128.png
+icon.filename = %(source.dir)s/icons/128x128.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
 orientation = portrait
@@ -56,16 +56,16 @@ fullscreen = 1
 #
 
 # (list) Permissions
-android.permissions = INTERNET
+android.permissions = INTERNET,MANAGE_DOCUMENTS
 
 # (int) Android API to use
-android.api = 3
+#android.api = 14
 
 # (int) Minimum API required (8 = Android 2.2 devices)
-android.minapi = 1
+#android.minapi = 8
 
 # (int) Android SDK version to use
-android.sdk = 17
+#android.sdk = 21
 
 # (str) Android NDK version to use
 #android.ndk = 9c
@@ -80,7 +80,7 @@ android.ndk_path = /opt/android-ndk/
 android.sdk_path = /opt/android-sdk/
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
-android.p4a_dir = /home/timur/Documents/Programming/Development/python-for-android
+#android.p4a_dir = 
 
 # (list) python-for-android whitelist
 #android.p4a_whitelist =
@@ -113,7 +113,7 @@ android.p4a_dir = /home/timur/Documents/Programming/Development/python-for-andro
 #android.manifest.intent_filters =
 
 # (list) Android additionnal libraries to copy into libs/armeabi
-#android.add_libs_armeabi = libs/android/*.so
+android.add_libs_armeabi = libs/android/*.so
 #android.add_libs_armeabi_v7a = libs/android-v7/*.so
 #android.add_libs_x86 = libs/android-x86/*.so
 #android.add_libs_mips = libs/android-mips/*.so
@@ -144,7 +144,7 @@ android.p4a_dir = /home/timur/Documents/Programming/Development/python-for-andro
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
-log_level = 2
+log_level = 1
 
 # (int) Display warning if buildozer is run as root (0 = False, 1 = True)
 warn_on_root = 1
