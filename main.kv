@@ -57,6 +57,7 @@
 				
 	ScreenManager:
 		id: sm
+        size: self.size
 		Screen:
 			name: 'ViewCategoryPage'
 			canvas:
@@ -86,52 +87,4 @@
             name: 'ViewTasks'
             PageLayout:
                 id: ViewPage
-
-        # View Task Page
-		Screen:
-			name: 'ViewTaskPage'
-			BoxLayout:
-				rows: 2
-				orientation: 'vertical'
-				padding: '3sp'
-				spacing: '4sp'
-				canvas:
-				    Color:
-				        rgba: 2,2,2,.3
-				    Rectangle:
-				        pos: self.pos
-				        size: self.size
-
-				Carousel:
-					id: taskCarousel
-					size_hint: 1, .15
-                    loop: 'true'
-
-				BoxLayout:
-					orientation: 'horizontal'
-					TabbedPanel:
-						id: taskDays
-						do_default_tab: False
-						padding: '3sp'
-						spacing: '4sp'
-						TabbedPanelItem:
-							id: day_mon
-							text: 'Monday'
-						TabbedPanelItem:
-							id: day_tue
-							text: 'Tuesay'
-						TabbedPanelItem:
-							id: day_wed
-							text: 'Wednesday'
-						TabbedPanelItem:
-							id: day_thu
-							text: 'Thursday'
-						TabbedPanelItem:
-							id: day_fri
-							text: 'Friday'
-						TabbedPanelItem:
-							id: day_sat
-							text: 'Saturday'
-						TabbedPanelItem:
-							id: day_sun
-							text: 'Sunday'
+                background_color: (0, 1, 1, 1)

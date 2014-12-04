@@ -1,1 +1,56 @@
-<schedule><week name="Game on!" val="5"><task><status>Completed</status><name>CS:GO with buddies!</name><desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc><day>-1</day><time>16:00</time></task></week><week name="" val="4"><task><status>Completed</status><name>Real life hangman</name><desc>Need a reason to hang that Thomas guy.</desc><day>-1</day><time>16:00</time></task></week><week name="" val="3"><task><status>Completed</status><name>Shark racing!</name><desc>Sharky the goldfish is really excited!</desc><day>-1</day><time>16:00</time></task></week><week name="" val="2"><task><status>Cancelled</status><name>Carotting</name><desc>Apparently banned?</desc><day>-1</day><time>13:00</time></task></week><week name="" val="1"><task><status>Cancelled</status><name>Nothing</name><desc>Nothing!</desc><day>-1</day><time>09:00</time></task></week></schedule>
+<schedule>
+    <week name="Game on!" val="5">
+        <task>
+            <status>Completed</status>
+            <name>CS:GO with buddies1</name>
+            <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
+            <day>-1</day>
+            <time>16:00</time>
+        </task>
+    </week>
+    <week name="Game on!" val="5">
+        <task>
+            <status>Completed</status>
+            <name>CS:GO with buddies2</name>
+            <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
+            <day>-1</day>
+            <time>16:00</time>
+        </task>
+    </week>
+    <week name="Game on!" val="5">
+        <task>
+            <status>Completed</status>
+            <name>CS:GO with buddies3</name>
+            <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
+            <day>-1</day>
+            <time>16:00</time>
+        </task>
+    </week>
+    <week name="Game on!" val="5">
+        <task>
+            <status>Completed</status>
+            <name>CS:GO with buddies4</name>
+            <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
+            <day>-1</day>
+            <time>16:00</time>
+        </task>
+    </week>
+    <week name="Game on!" val="5">
+        <task>
+            <status>Completed</status>
+            <name>CS:GO with buddies5</name>
+            <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
+            <day>-1</day>
+            <time>16:00</time>
+        </task>
+    </week>
+    <week name="Game on!" val="5">
+        <task>
+            <status>Completed</status>
+            <name>CS:GO with buddies6</name>
+            <desc>Gonna play CS:GO at Ian's place! Don't forget to bring snacks!</desc>
+            <day>-1</day>
+            <time>16:00</time>
+        </task>
+    </week>
+    <week name="" val="4"><task><status>Completed</status><name>Real life hangman</name><desc>Need a reason to hang that Thomas guy.</desc><day>-1</day><time>16:00</time></task></week><week name="" val="3"><task><status>Completed</status><name>Shark racing!</name><desc>Sharky the goldfish is really excited!</desc><day>-1</day><time>16:00</time></task></week><week name="" val="2"><task><status>Cancelled</status><name>Carotting</name><desc>Apparently banned?</desc><day>-1</day><time>13:00</time></task></week><week name="" val="1"><task><status>Cancelled</status><name>Nothing</name><desc>Nothing!</desc><day>-1</day><time>09:00</time></task></week></schedule>

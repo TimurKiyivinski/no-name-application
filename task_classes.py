@@ -144,8 +144,16 @@ class schedule:
             for weekNo in cat.weeks:
                 allTasks.extend(weekNo.tasks)
         return allTasks
+    def updateTask(self, oldTask, newTask):
+        for cat in self.categories:
+            for weekNo in cat.weeks:
+                for taskItem in range(0, len(weekNo.tasks)):
+                    if weekNo.tasks[taskItem] == oldTask:
+                        weekNo.tasks[taskItem] = newTask
+                        print('Yes')
+                        break
 
 if __name__ == '__main__':
-    print 'Please load this as a module.'
+    print('Please load this as a module.')
 else:
-    print 'Loaded as module: %s' % __name__
+    print('Loaded as module: %s' % __name__)
