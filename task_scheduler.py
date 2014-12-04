@@ -63,6 +63,7 @@ def getUserSchedule():
                         elif items_tag == 'desc':
                             new_task.setExplain(items_text)
                         elif items_tag == 'day':
+                            print(type(items_text))
                             new_task.setDay(items_text)
                         elif items_tag == 'time':
                             new_task.setTime(items_text)

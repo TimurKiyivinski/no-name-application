@@ -24,9 +24,12 @@ class task:
     def setExplain(self, newExplain):
         self.explain = newExplain
     def setDay(self, newDay):
-        if newDay in range(0, 7):
-            self.day = newDay
-        else:
+        try:
+            if int(newDay) in range(0, 7):
+                self.day = int(newDay)
+            else:
+                self.day = -1
+        except:
             self.day = -1
     def setTime(self, newTime):
         self.time = newTime
