@@ -85,10 +85,13 @@ class ProcrastinateLater(BoxLayout):
             newTaskDay=taskDayText,
             newTaskTime=taskDayTime))
         taskCloseButton = Button(text='Cancel', on_press=taskPopup.dismiss)
+        taskGrid.add_widget(Label(text='Task Name'))
         taskGrid.add_widget(taskNameText)
+        taskGrid.add_widget(Label(text='Task Description'))
         taskGrid.add_widget(taskExplainText)
+        taskGrid.add_widget(Label(text='Task Day, 1-7'))
         taskGrid.add_widget(taskDayText)
-        taskGrid.add_widget(taskDayTime)
+        taskGrid.add_widget(Label(text='Task Time, 1-24'))
         taskGrid.add_widget(taskSaveButton)
         taskGrid.add_widget(taskCloseButton)
         taskPopup.open()
@@ -112,9 +115,13 @@ class ProcrastinateLater(BoxLayout):
             newTaskDay=taskDayText,
             newTaskTime=taskDayTime))
         taskCloseButton = Button(text='Cancel', on_press=taskPopup.dismiss)
+        taskGrid.add_widget(Label(text='Task Name'))
         taskGrid.add_widget(taskNameText)
+        taskGrid.add_widget(Label(text='Task Description'))
         taskGrid.add_widget(taskExplainText)
+        taskGrid.add_widget(Label(text='Task Day, 1-7'))
         taskGrid.add_widget(taskDayText)
+        taskGrid.add_widget(Label(text='Task Time, 1-24'))
         taskGrid.add_widget(taskDayTime)
         taskGrid.add_widget(taskSaveButton)
         taskGrid.add_widget(taskCloseButton)
@@ -265,10 +272,10 @@ class ProcrastinateLater(BoxLayout):
                     weekPages.add_widget(scrollPage)
     def loadTasksByStatus(self, *args, **kwargs):
         print('TASK BY STATUS')
-        tasks = self.schedule.getTasks()
+        self.current_category = 'task_by_status'
     def loadTasksByCategory(self, *args, **kwargs):
+        self.current_category = 'task_by_category'
         print('TASK BY CATEGORY')
-        tasks = self.schedule.getTasks()
     def resetTaskPage(self, task):
         x = 1
 
