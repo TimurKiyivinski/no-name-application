@@ -53,6 +53,7 @@ class ProcrastinateLater(BoxLayout):
         super(ProcrastinateLater, self).__init__(**kwargs)
         category_page = self.ids['category_page']
         self.schedule = scheduler.getUserSchedule()
+        self.current_category = ''
         for category in self.schedule:
             category_button = Button(text=category.name, size_y='48dp')
             category_button.bind(on_press=partial(self.loadTasks, category_name=category.name))
@@ -68,7 +69,13 @@ class ProcrastinateLater(BoxLayout):
         taskDayText = TextInput(text=str(task.day))
         taskDayTime = TextInput(text=str(task.time))
         taskSaveButton = Button(text='Save')
-        taskSaveButton.bind(on_press=partial(self.saveTask, oldTask=task, newTaskName=taskNameText.text))
+        taskSaveButton.bind(on_press=partial(self.saveTask,
+            taskButtonPopup=taskPopup,
+            oldTask=task,
+            newTaskName=taskNameText,
+            newTaskExplain=taskExplainText,
+            newTaskDay=taskDayText,
+            newTaskTime=taskDayTime))
         taskCloseButton = Button(text='Cancel', on_press=taskPopup.dismiss)
         taskGrid.add_widget(taskNameText)
         taskGrid.add_widget(taskExplainText)
@@ -79,12 +86,26 @@ class ProcrastinateLater(BoxLayout):
         taskPopup.open()
         pass
     def saveTask(self, *args, **kwargs):
+        taskPopup = kwargs['taskButtonPopup']
         oldTask = kwargs['oldTask']
-        newTask = classes.task('Replaced!', 'COMPLETE', 'MEOW', 2)
+        newTaskName = kwargs['newTaskName'].text
+        newTaskExplain = kwargs['newTaskExplain'].text
+        try:
+            newTaskDay = int(kwargs['newTaskDay'].text)
+        except:
+            newTaskDay = -1
+        try:
+            newTaskTime = int(kwargs['newTaskTime'].text)
+        except:
+            newTaskTime = 0
+        newTask = classes.task(newTaskName, 'Completed', newTaskExplain, newTaskDay, newTaskTime)
         self.schedule.updateTask(oldTask, newTask)
+        taskPopup.dismiss()
+        self.loadTasks(category_name=self.current_category)
         pass
     def loadTasks(self, *args, **kwargs):
         categoryName = kwargs['category_name']
+        self.current_category = categoryName
         print(str(kwargs))
         for category in self.schedule:
             if category.name == categoryName:
