@@ -1,0 +1,97 @@
+<schedule>
+<week name="Beer with family" val="9">
+<task>
+<status>Completed</status>
+<name>Drink beer with family</name>
+<desc>Good Beer taste better with the one you love.</desc>
+<day>1</day>
+<time>1.30</time>
+</task
+></week>
+<week name="Family Dinner" val="8">
+<task>
+<status>Completed</status>
+<name>Family Dinner</name>
+<desc>Dinner like no tomorrow</desc>
+<day>1</day>
+<time>19.30</time>
+</task>
+<task>
+<status>Cancel</status>
+<name>Dinner with grandparents</name>
+<desc>Finally!</desc>
+<day>2</day>
+<time>7.30</time>
+</task>
+</week>
+<week name="Cousins" val="7">
+<task>
+<status>Completed</status>
+<name>Bowling with cousin</name>
+<desc>Fun is the word</desc>
+<day>1</day>
+<time>16:00</time>
+</task>
+<task>
+<status>Cancel</status>
+<name>Dinner with cousin</name>
+<desc>Fine dining</desc>
+<day>2</day>
+<time></time>
+</task>
+</week>
+<week name="Swimming time" val="6">
+<task>
+<status>Completed</status>
+<name>Swimming with the family</name>
+<desc>Time to race</desc>
+<day>-1</day>
+<time>16:00</time>
+</task>
+</week>
+<week name="Travelling with Family" val="5">
+<task>
+<status>Cancel</status>
+<name>To Thailand</name>
+<desc>I get confuse.</desc>
+<day>1</day>
+<time></time>
+</task>
+</week>
+<week name="Break" val="4">
+<task>
+<status></status>
+<name></name>
+<desc></desc>
+<day>-</day>
+<time></time>
+</task>
+</week>
+<week name="Shopping" val="3">
+<task>
+<status>Ongoing</status>
+<name>Shopping with Family</name>
+<desc>Shopping for shoes</desc>
+<day>-1</day>
+<time>13.00</time>
+</task>
+</week>
+<week name="Dota 2" val="2">
+<task>
+<status>Completed</status>
+<name>Dota2 with brother</name>
+<desc>Dota time</desc>
+<day>1</day>
+<time>8.00</time>
+</task>
+</week>
+<week name="Break away from life" val="1">
+<task>
+<status>Completed</status>
+<name>Sleep for the whole day</name>
+<desc>Kimochi!!</desc>
+<day>1</day>
+<time></time>
+</task>
+</week>
+</schedule>

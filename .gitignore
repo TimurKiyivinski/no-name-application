@@ -3,4 +3,5 @@
 *.o
 *.pyc
 .buildozer
+.swp
 bin

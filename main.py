@@ -51,6 +51,8 @@ class ProcrastinateLater(BoxLayout):
     time = NumericProperty(0)
     def __init__(self, **kwargs):
         super(ProcrastinateLater, self).__init__(**kwargs)
+        # Authenticate with drive
+        self.drive = scheduler.tsAuthenticate()
         category_page = self.ids['category_page']
         self.schedule = scheduler.getUserSchedule()
         self.current_category = ''
@@ -102,6 +104,7 @@ class ProcrastinateLater(BoxLayout):
         self.schedule.updateTask(oldTask, newTask)
         taskPopup.dismiss()
         self.loadTasks(category_name=self.current_category)
+        scheduler.writeUserSchedule(self.schedule, self.drive)
         pass
     def loadTasks(self, *args, **kwargs):
         categoryName = kwargs['category_name']

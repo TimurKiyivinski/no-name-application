@@ -25,7 +25,14 @@ def tsAuthenticate():
 
 # Uploads a file to Google Drive
 def dbUpload(drive, userCategory, categoryStr):
-    upSchedule = drive.CreateFile({'title': userCategory.name + '.xml'})
+    found = False
+    file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+    for drive_file in file_list:
+        if drive_file['title'] == userCategory.name + '.xml':
+            found = True
+            upSchedule = drive.CreateFile({'id': drive_file['id'],'title': userCategory.name + '.xml'})
+    if found == False:
+        upSchedule = drive.CreateFile({'title': userCategory.name + '.xml'})
     upSchedule.SetContentString(categoryStr)
     upSchedule.Upload()
 
@@ -39,7 +46,7 @@ def dbSetup():
 # Loads all schedules in the user's Google Drive folder and create a schedule
 # accordingly.
 def getUserSchedule():
-    cats = ['Games', 'University', 'Fun']
+    cats = ['Games', 'University', 'Fun', 'Family']
     schedules = classes.schedule()
     for CATEGORY in cats:
         try:
@@ -102,17 +109,12 @@ def writeUserSchedule(userSchedule, drive):
         #newTree.write(category.name + ".xml")
 
 # Used for debugging purposes.
-def main(userSchedule):
-    for category in userSchedule:
-        print(category.toString())
-        for week in category:
-            print(week.toString())
-            for task in week:
-                print(task.toString())
+def main():
     drive = tsAuthenticate()
+    getUserSchedule(drive)
     writeUserSchedule(userSchedule, drive)
 
 #Run the application
 if __name__ == '__main__':
     print('Debugging.')
-    main(getUserSchedule())
+    main()
