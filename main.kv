@@ -65,21 +65,22 @@
 					rgba: 1, 1, 1, .8
 				Rectangle:
 					size: self.size
-			BoxLayout:
+		    GridLayout:
                 id: category_page
-				orientation: 'vertical'
-				padding: '50sp'
-				spacing: '15sp'
-				
-				Button:
-					size_y: '48dp'
-					text: 'View Task by Status'
-					on_press: root.loadTasksByStatus
-					
-				Button:
-					size_y: '48dp'
-					text: 'View Task by Category'
-					on_press: root.loadTasksByCategory
+		    	orientation: 'vertical'
+                cols: 1
+		    	padding: '50sp'
+		    	spacing: '15sp'
+		    	
+		    	Button:
+		    		size_y: '48dp'
+		    		text: 'View Task by Status'
+		    		on_press: root.loadTasksByStatus
+		    		
+		    	Button:
+		    		size_y: '48dp'
+		    		text: 'View Task by Category'
+		    		on_press: root.loadTasksByCategory
 
         Screen:
             name: 'ViewTasks'

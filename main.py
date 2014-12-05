@@ -118,11 +118,11 @@ class ProcrastinateLater(BoxLayout):
                 weekPages.clear_widgets()
                 for week in category:
                     print(week.number)
-                    gridPage = GridLayout(cols=1, size_hint_y=None)
+                    gridPage = GridLayout(cols=1)
                     gridPage.bind(minimum_height=gridPage.setter('height'))
                     weekButton = Button(text=str(week.number), size_hint_y=None, height='50dp')
                     gridPage.add_widget(weekButton)
-                    tabbedPage = TabbedPanel(size_hint_y=None, do_default_tab=False)
+                    tabbedPage = TabbedPanel(size_hint_y=None, do_default_tab=False, height=self.height)
                     # Create all the panels for days
                     # Monday
                     tabbedItem_monday = TabbedPanelItem(text='Monday')
@@ -209,9 +209,9 @@ class ProcrastinateLater(BoxLayout):
                     tabbedPage.add_widget(tabbedItem_sunday)
                     tabbedPage.add_widget(tabbedItem_no_day)
                     gridPage.add_widget(tabbedPage)
-                    scrollPage = ScrollView(size=self.size)
-                    scrollPage.add_widget(gridPage)
-                    weekPages.add_widget(scrollPage)
+                    #scrollPage = ScrollView(size=self.size)
+                    #scrollPage.add_widget(gridPage)
+                    weekPages.add_widget(gridPage)
     def loadTasksByStatus(self, *args, **kwargs):
         print('TASK BY STATUS')
         tasks = self.schedule.getTasks()
