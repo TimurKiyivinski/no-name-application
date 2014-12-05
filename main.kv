@@ -72,19 +72,17 @@
 				spacing: '15sp'
 				
 				Button:
-					size_hint: 1, None
 					size_y: '48dp'
 					text: 'View Task by Status'
 					on_press: root.loadTasksByStatus
 					
 				Button:
-					size_hint: 1, None
 					size_y: '48dp'
 					text: 'View Task by Category'
 					on_press: root.loadTasksByCategory
 
         Screen:
             name: 'ViewTasks'
-            PageLayout:
+            Carousel:
                 id: ViewPage
                 background_color: (0, 1, 1, 1)

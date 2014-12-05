@@ -150,7 +150,6 @@ class schedule:
                 for taskItem in range(0, len(weekNo.tasks)):
                     if weekNo.tasks[taskItem] == oldTask:
                         weekNo.tasks[taskItem] = newTask
-                        print('Yes')
                         break
 
 if __name__ == '__main__':

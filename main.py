@@ -54,7 +54,7 @@ class ProcrastinateLater(BoxLayout):
         # Authenticate with drive
         self.drive = scheduler.tsAuthenticate()
         category_page = self.ids['category_page']
-        self.schedule = scheduler.getUserSchedule()
+        self.schedule = scheduler.getUserSchedule(self.drive)
         self.current_category = ''
         for category in self.schedule:
             category_button = Button(text=category.name, size_y='48dp')
@@ -104,7 +104,7 @@ class ProcrastinateLater(BoxLayout):
         self.schedule.updateTask(oldTask, newTask)
         taskPopup.dismiss()
         self.loadTasks(category_name=self.current_category)
-        scheduler.writeUserSchedule(self.schedule, self.drive)
+        scheduler.writeUserSchedule(self.schedule, self.drive, self.current_category)
         pass
     def loadTasks(self, *args, **kwargs):
         categoryName = kwargs['category_name']
@@ -120,7 +120,7 @@ class ProcrastinateLater(BoxLayout):
                     print(week.number)
                     gridPage = GridLayout(cols=1, size_hint_y=None)
                     gridPage.bind(minimum_height=gridPage.setter('height'))
-                    weekButton = Button(text=str(week.number), size_hint_y=None)
+                    weekButton = Button(text=str(week.number), size_hint_y=None, height='50dp')
                     gridPage.add_widget(weekButton)
                     tabbedPage = TabbedPanel(size_hint_y=None, do_default_tab=False)
                     # Create all the panels for days
