@@ -56,10 +56,43 @@ class ProcrastinateLater(BoxLayout):
         category_page = self.ids['category_page']
         self.schedule = scheduler.getUserSchedule(self.drive)
         self.current_category = ''
+        self.current_week = 1
+        view_status_button = Button(text='View Tasks By Status', size_y='48dp')
+        view_status_button.bind(on_press=partial(self.loadTasksByStatus))
+        view_category_button = Button(text='View Tasks By Category', size_y='48dp')
+        view_category_button.bind(on_press=partial(self.loadTasksByCategory))
+        category_page.add_widget(view_status_button)
+        category_page.add_widget(view_category_button)
         for category in self.schedule:
             category_button = Button(text=category.name, size_y='48dp')
             category_button.bind(on_press=partial(self.loadTasks, category_name=category.name))
             category_page.add_widget(category_button)
+    def addItem(self, *args, **kwargs):
+        task = classes.task()
+        taskGrid = GridLayout(cols=1)
+        scrollTask = ScrollView()
+        scrollTask.add_widget(taskGrid)
+        taskPopup = Popup(title=task.name, content=scrollTask, auto_dismiss=False, size_hint=(1, 1))
+        taskNameText = TextInput(text=task.name)
+        taskExplainText = TextInput(text=task.explain)
+        taskDayText = TextInput(text=str(task.day))
+        taskDayTime = TextInput(text=str(task.time))
+        taskSaveButton = Button(text='Save')
+        taskSaveButton.bind(on_press=partial(self.addNewTask,
+            taskButtonPopup=taskPopup,
+            newTaskName=taskNameText,
+            newTaskExplain=taskExplainText,
+            newTaskDay=taskDayText,
+            newTaskTime=taskDayTime))
+        taskCloseButton = Button(text='Cancel', on_press=taskPopup.dismiss)
+        taskGrid.add_widget(taskNameText)
+        taskGrid.add_widget(taskExplainText)
+        taskGrid.add_widget(taskDayText)
+        taskGrid.add_widget(taskDayTime)
+        taskGrid.add_widget(taskSaveButton)
+        taskGrid.add_widget(taskCloseButton)
+        taskPopup.open()
+        pass
     def showTask(self, *args, **kwargs):
         task = kwargs['taskItem']
         taskGrid = GridLayout(cols=1)
@@ -106,6 +139,24 @@ class ProcrastinateLater(BoxLayout):
         self.loadTasks(category_name=self.current_category)
         scheduler.writeUserSchedule(self.schedule, self.drive, self.current_category)
         pass
+    def addNewTask(self, *args, **kwargs):
+        taskPopup = kwargs['taskButtonPopup']
+        newTaskName = kwargs['newTaskName'].text
+        newTaskExplain = kwargs['newTaskExplain'].text
+        try:
+            newTaskDay = int(kwargs['newTaskDay'].text)
+        except:
+            newTaskDay = -1
+        try:
+            newTaskTime = int(kwargs['newTaskTime'].text)
+        except:
+            newTaskTime = 0
+        newTask = classes.task(newTaskName, 'Completed', newTaskExplain, newTaskDay, newTaskTime)
+        categories = self.schedule.addTask(self.current_category, self.current_week, "", newTask)
+        taskPopup.dismiss()
+        self.loadTasks(category_name=self.current_category)
+        scheduler.writeUserSchedule(self.schedule, self.drive, self.current_category)
+        pass
     def loadTasks(self, *args, **kwargs):
         categoryName = kwargs['category_name']
         self.current_category = categoryName
@@ -118,7 +169,7 @@ class ProcrastinateLater(BoxLayout):
                 weekPages.clear_widgets()
                 for week in category:
                     print(week.number)
-                    gridPage = GridLayout(cols=1)
+                    gridPage = GridLayout(background_color=(1, 0, 1, .9), cols=1, size_hint_y=None)
                     gridPage.bind(minimum_height=gridPage.setter('height'))
                     weekButton = Button(text=str(week.number), size_hint_y=None, height='50dp')
                     gridPage.add_widget(weekButton)
@@ -209,9 +260,9 @@ class ProcrastinateLater(BoxLayout):
                     tabbedPage.add_widget(tabbedItem_sunday)
                     tabbedPage.add_widget(tabbedItem_no_day)
                     gridPage.add_widget(tabbedPage)
-                    #scrollPage = ScrollView(size=self.size)
-                    #scrollPage.add_widget(gridPage)
-                    weekPages.add_widget(gridPage)
+                    scrollPage = ScrollView(size=self.size)
+                    scrollPage.add_widget(gridPage)
+                    weekPages.add_widget(scrollPage)
     def loadTasksByStatus(self, *args, **kwargs):
         print('TASK BY STATUS')
         tasks = self.schedule.getTasks()

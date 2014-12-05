@@ -42,6 +42,7 @@
 				x: self.parent.x
 				size: self.parent.size
 		Button:
+            on_press: root.addItem()
 			Image:
 				source: './icons/add.png'
 				y: self.parent.y
@@ -71,16 +72,6 @@
                 cols: 1
 		    	padding: '50sp'
 		    	spacing: '15sp'
-		    	
-		    	Button:
-		    		size_y: '48dp'
-		    		text: 'View Task by Status'
-		    		on_press: root.loadTasksByStatus
-		    		
-		    	Button:
-		    		size_y: '48dp'
-		    		text: 'View Task by Category'
-		    		on_press: root.loadTasksByCategory
 
         Screen:
             name: 'ViewTasks'
