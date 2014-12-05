@@ -51,6 +51,7 @@ class ProcrastinateLater(BoxLayout):
     time = NumericProperty(0)
     def __init__(self, **kwargs):
         super(ProcrastinateLater, self).__init__(**kwargs)
+    def authenticate(self, *args, **kwargs):
         # Authenticate with drive
         self.drive = scheduler.tsAuthenticate()
         category_page = self.ids['category_page']
@@ -67,6 +68,8 @@ class ProcrastinateLater(BoxLayout):
             category_button = Button(text=category.name, size_y='48dp')
             category_button.bind(on_press=partial(self.loadTasks, category_name=category.name))
             category_page.add_widget(category_button)
+        sm = self.ids['sm']
+        sm.current = 'ViewCategoryPage'
     def addItem(self, *args, **kwargs):
         task = classes.task()
         taskGrid = GridLayout(cols=1)
@@ -114,6 +117,10 @@ class ProcrastinateLater(BoxLayout):
             newTaskExplain=taskExplainText,
             newTaskDay=taskDayText,
             newTaskTime=taskDayTime))
+        taskDeleteButton = Button(text='Delete')
+        taskDeleteButton.bind(on_press=partial(self.deleteTask,
+            taskButtonPopup=taskPopup,
+            oldTask=task))
         taskCloseButton = Button(text='Cancel', on_press=taskPopup.dismiss)
         taskGrid.add_widget(Label(text='Task Name'))
         taskGrid.add_widget(taskNameText)
@@ -124,6 +131,7 @@ class ProcrastinateLater(BoxLayout):
         taskGrid.add_widget(Label(text='Task Time, 1-24'))
         taskGrid.add_widget(taskDayTime)
         taskGrid.add_widget(taskSaveButton)
+        taskGrid.add_widget(taskDeleteButton)
         taskGrid.add_widget(taskCloseButton)
         taskPopup.open()
         pass
@@ -142,6 +150,14 @@ class ProcrastinateLater(BoxLayout):
             newTaskTime = 0
         newTask = classes.task(newTaskName, 'Completed', newTaskExplain, newTaskDay, newTaskTime)
         self.schedule.updateTask(oldTask, newTask)
+        taskPopup.dismiss()
+        self.loadTasks(category_name=self.current_category)
+        scheduler.writeUserSchedule(self.schedule, self.drive, self.current_category)
+        pass
+    def deleteTask(self, *args, **kwargs):
+        taskPopup = kwargs['taskButtonPopup']
+        oldTask = kwargs['oldTask']
+        self.schedule.deleteTask(oldTask)
         taskPopup.dismiss()
         self.loadTasks(category_name=self.current_category)
         scheduler.writeUserSchedule(self.schedule, self.drive, self.current_category)
@@ -177,10 +193,10 @@ class ProcrastinateLater(BoxLayout):
                 for week in category:
                     print(week.number)
                     gridPage = GridLayout(background_color=(1, 0, 1, .9), cols=1, size_hint_y=None)
-                    gridPage.bind(minimum_height=gridPage.setter('height'))
                     weekButton = Button(text=str(week.number), size_hint_y=None, height='50dp')
                     gridPage.add_widget(weekButton)
                     tabbedPage = TabbedPanel(size_hint_y=None, do_default_tab=False, height=self.height)
+                    gridPage.bind(minimum_height=tabbedPage.setter('height'))
                     # Create all the panels for days
                     # Monday
                     tabbedItem_monday = TabbedPanelItem(text='Monday')

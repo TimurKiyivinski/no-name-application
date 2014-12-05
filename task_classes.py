@@ -151,6 +151,13 @@ class schedule:
                     if weekNo.tasks[taskItem] == oldTask:
                         weekNo.tasks[taskItem] = newTask
                         break
+    def deleteTask(self, oldTask):
+        for cat in self.categories:
+            for weekNo in cat.weeks:
+                for taskItem in range(0, len(weekNo.tasks)):
+                    if weekNo.tasks[taskItem] == oldTask:
+                        weekNo.tasks.pop(taskItem)
+                        break
 
 if __name__ == '__main__':
     print('Please load this as a module.')

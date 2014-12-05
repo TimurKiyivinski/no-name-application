@@ -59,6 +59,12 @@
 	ScreenManager:
 		id: sm
         size: self.size
+        Screen:
+            GridLayout:
+                cols: 1
+                Button:
+                    text: 'Log into Google'
+                    on_press: root.authenticate()
 		Screen:
 			name: 'ViewCategoryPage'
 			canvas:
